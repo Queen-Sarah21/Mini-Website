@@ -1,0 +1,23 @@
+
+h1{
+    color: blue;
+    text-align: center;
+}
+.solar{
+    border: solid black;
+    text-align: center;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 70px;
+    padding-top: 70px;
+    margin: auto;
+}
+div img{
+    text-align: center;
+}
+.planets td{
+    border: 2px solid cyan;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}

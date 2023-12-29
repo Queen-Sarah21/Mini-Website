@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--Name: Queen Sarah Anumu Bih
+		Date: 2023-06-03
+		Description: html5 file. Declaration of variables in java script (JS).-->
+    <head>
+		<title>JaveScript Calculator</title>
+        <meta charset = "utf-8">
+		<script type = "text/javascript"> 
+                //global variables
+		        const num1 = 10, num2 = 20, num3 = "30", num4 = "40";
+
+                function Addition(){
+			document.write("10 + 20 + 20 + 10 = "+(num1+num2+num2+num1)+"<br/>");
+			document.write("40 + 20 + 10 = "+(num4+num2+num1)+"<br/>");
+			document.write("40 + 20 + 20 + 30 = "+(num4+num2+num2+num3)+"<br/>");
+			document.write("10 + 10 + 20 = "+(num1+num1+num2)+"<br/>");
+			document.write("10 + 20 + 30 + 40 = "+(num1+num2+num3+num4)+"<br/><br/>");
+			document.write("Conclusion: If one of the first two variables is text, then concatenation else addition"+"<br/><br/>");
+		}
+
+		function Subtraction(){
+			document.write("10 - 20 - 20 - 10 = "+(num1-num2-num2-num1)+"<br/>");
+			document.write("40 - 20 - 10 = "+(num4-num2-num1)+"<br/>");
+			document.write("40 - 20 - 20 - 30 = "+(num4-num2-num2-num3)+"<br/>");
+			document.write("10 - 10 - 20 = "+(num1-num1-num2)+"<br/>");
+			document.write("10 - 20 - 30 - 40 = "+(num1-num2-num3-num4)+"<br/><br/>");
+			document.write("Conclusion:There is no diference between numerical or textual values"+"<br/>");
+		}
+
+		function Subtraction2(){
+			document.getElementById("id61").innerHTML = num1;
+			document.getElementById("id62").innerHTML = num2;
+			document.getElementById("id63").outerHTML = "<b>"+num2+"</b>";
+			document.getElementById("id64").innerHTML = num1;
+			document.getElementById("res6").innerHTML = (num1 - num2 - num2 - num1);
+
+            document.getElementById("id71").innerHTML = num4;
+			document.getElementById("id72").innerHTML = num2;
+			document.getElementById("id73").innerHTML = num1;
+			document.getElementById("res7").innerHTML = (num4 - num2 - num1);
+
+            document.getElementById("id81").innerHTML = num4;
+			document.getElementById("id82").innerHTML = num2;
+			document.getElementById("id83").innerHTML = num2;
+			document.getElementById("id84").innerHTML = num3;
+			document.getElementById("res8").innerHTML = (num4 - num2 - num2 - num3);
+
+            document.getElementById("id91").innerHTML = num1;
+			document.getElementById("id92").innerHTML = num1;
+			document.getElementById("id93").innerHTML = num2;
+			document.getElementById("res9").innerHTML = (num1 - num1 - num2);
+
+            document.getElementById("id101").innerHTML = num1;
+			document.getElementById("id102").innerHTML = num2;
+			document.getElementById("id103").innerHTML = num3;
+			document.getElementById("id104").innerHTML = num4;
+			document.getElementById("res10").innerHTML = (num1 - num2 - num3 - num4);
+		}
+
+		function Addition2(){
+			document.getElementById("id11").innerHTML = num1;
+			document.getElementById("id12").innerHTML = num2;
+			document.getElementById("id13").innerHTML = num2;
+			document.getElementById("id14").innerHTML = num1;
+			document.getElementById("res1").innerHTML = (num1 + num2 + num2 + num1);
+
+            document.getElementById("id21").innerHTML = num4;
+			document.getElementById("id22").innerHTML = num2;
+			document.getElementById("id23").innerHTML = num1;
+			document.getElementById("res2").innerHTML = (num4 + num2 + num1);
+
+            document.getElementById("id31").innerHTML = num4;
+			document.getElementById("id32").innerHTML = num2;
+			document.getElementById("id33").innerHTML = num2;
+			document.getElementById("id34").innerHTML = num3;
+			document.getElementById("res3").innerHTML = (num4 + num2 + num2 + num3);
+
+            document.getElementById("id41").innerHTML = num1;
+			document.getElementById("id42").innerHTML = num1;
+			document.getElementById("id43").innerHTML = num2;
+			document.getElementById("res4").innerHTML = (num1 + num1 + num2);
+
+            document.getElementById("id51").innerHTML = num1;
+			document.getElementById("id52").innerHTML = num2;
+			document.getElementById("id53").innerHTML = num3;
+			document.getElementById("id54").innerHTML = num4;
+			document.getElementById("res5").innerHTML = (num1 + num2 + num3 + num4);
+		}
+            </script>
+    </head>
+    <body>
+        <h1>Addition and Subtraction using .write() method</h1>
+        <input type="button" value="Addition" onClick="Addition()">
+        <input type="button" value="Subtraction" onClick="Subtraction()">
+       <h1>Addition and Subtraction using .getElementById() method</h1>
+        <input type="button" value="Addition" onClick="Addition2()">
+     
+       <p><span id="id11">?</span> + <b id="id12">?</b> + <b id="id13">?</b> + <b id="id14">?</b> =
+       <b id="res1">?</b></p>
+       <p><b id="id21">?</b> + <b id="id22">?</b> + <b id="id23">?</b> = <b id="res2">?</b></p>
+       <p><b id="id31">?</b> + <b id="id32">?</b> + <b id="id33">?</b> + <b id="id34">?</b> =
+       <b id="res3">?</b></p>
+       <p><b id="id41">?</b> + <b id="id42">?</b> + <b id="id43">?</b> = <b id="res4">?</b></p>
+       <p><b id="id51">?</b> + <b id="id52">?</b> + <b id="id53">?</b> + <b id="id54">?</b> =
+       <b id="res5">?</b></p>
+     
+        <input type="button" value="Subtraction" onClick="Subtraction2()">
+     
+       <p><b id="id61">?</b> - <b id="id62">?</b> - <b id="id63">?</b> - <b id="id64">?</b> =
+       <b id="res6">?</b></p>
+       <p><b id="id71">?</b> - <b id="id72">?</b> - <b id="id73">?</b> = <b id="res7">?</b></p>
+       <p><b id="id81">?</b> - <b id="id82">?</b> - <b id="id83">?</b> - <b id="id84">?</b> =
+       <b id="res8">?</b></p>
+       <p><b id="id91">?</b> - <b id="id92">?</b> - <b id="id93">?</b> = <b id="res9">?</b></p>
+       <p><b id="id101">?</b> - <b id="id102">?</b> - <b id="id103">?</b> -
+       <b id="id104">?</b> = <b id="res10">?</b></p>     
+            
+    </body>
+</html>

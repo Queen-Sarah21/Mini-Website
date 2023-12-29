@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <!-- Queen Sarah, Anumu Bih
+     Description: html5 file of the Solar System and its nine planets. Image mappings with all types of links
+     as well as search button for the various planets
+	 Date: 2023-05-19                 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./p_css/Css_style.css">
+    <title>Planets</title>
+
+   <script type="text/javascript">
+    function setPlanet(PlanetName)
+	{
+	  document.getElementById("PName").value = PlanetName;
+	  checkPlanet();
+	}
+   
+    function checkPlanet()
+	{
+	  //arrays containing data for 3 planets
+	  var arrNames = ["sun", "mercury", "venus","earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
+	  var arrDias = ["1,390,000 Km", "4,880 Km", "12,103.6 Km", " 12,756.3 km", "6,794 km", "142,984 km",
+                     "120,536 km", "51,118 km ", "49,532 km" ];
+	  var arrDistances = ["Temperature: 5800 K (surface) 15,600,000 K (core)",
+                        "Orbit: 57,910,000 km (0.38 AU) from Sun", "Orbit: 108,200,000 km (0.72 AU) from Sun",
+                        "Orbit: 149,600,000 km from Sun", "Orbit: 227,940,000 km from Sun",
+                        "Orbit: 778,330,000 km from Sun", "Orbit: 1,429,400,000 km from Sun",
+                        "Orbit: 2,870,990,000 km from Sun", "Orbit: 4,504,000,000 km from Sun" ];
+	  var arrImgs = ["./", "./imgs/Sun.jpg", "./imgs/Mercury.jpg", "./imgs/Venus.jpg", "./imgs/Earth.jpg",
+                     "./imgs/Mars.jpg", "./imgs/Jupiter.jpg", "./imgs/Saturn.jpg","./imgs/Uranus.jpg",
+                      "./imgs/Neptune.jpg"];
+	  
+      var result, nPlanet, imgPlanet;
+	  nPlanet = document.getElementById("PName").value.toLowerCase();
+	  
+	  var index = -1;
+	  
+        for (var i = 0; i < 3; i++) //using loop for the search
+	  {
+	    if (arrNames[i] == nPlanet)
+		{
+          index = i;
+          result = "Planet: "+arrNames[index].toUpperCase()+
+			       " having diameter of: "+arrDias[index]+
+                   " and "+arrDistances[index];
+		  imgPlanet = arrImgs[index];		  
+		}
+	  }
+	  
+	  if (index == -1)  //no planet name was found
+	  {
+		result = "Planet: inexistent having diameter of: 0 Km and 0 Km as distances from Sun!";
+		imgPlanet = "./imgs/none.jpg";
+	  }
+	  
+	   //using switch for the search
+	  switch (nPlanet){
+	    case "sun" :
+			result = "Planet: "+arrNames[0].toUpperCase()+
+		" having diameter of: "+arrDias[0] + " and "+arrDistances[0];
+			imgPlanet = "./imgs/Sun.jpg";
+            break;					 
+		case "mercury" :
+			result = "Planet: "+arrNames[1].toUpperCase()+
+		" having diameter of: "+arrDias[1] + " and "+arrDistances[1];
+			imgPlanet = "./imgs/Mercury.jpg";
+            break;					 
+		case "venus" :
+			result = "Planet: "+arrNames[2].toUpperCase()+
+		" having diameter of: "+arrDias[2] + " and "+arrDistances[2];
+			imgPlanet = "./imgs/Venus.jpg";
+            break;	
+        case "earth" :
+			result = "Planet: "+arrNames[3].toUpperCase()+
+		" having diameter of: "+arrDias[3] + " and "+arrDistances[3];
+			imgPlanet = "./imgs/Earth.jpg";
+            break;
+        case "mars" :
+			result = "Planet: "+arrNames[4].toUpperCase()+
+		" having diameter of: "+arrDias[4] + " and "+arrDistances[4];
+			imgPlanet = "./imgs/Mars.jpg";
+            break;
+        case "jupiter" :
+			result = "Planet: "+arrNames[5].toUpperCase()+
+		" having diameter of: "+arrDias[5] + " and "+arrDistances[5];
+			imgPlanet = "./imgs/Jupiter.jpg";
+            break;		
+        case "saturn" :
+			result = "Planet: "+arrNames[6].toUpperCase()+
+		" having diameter of: "+arrDias[6] + " and "+arrDistances[6];
+			imgPlanet = "./imgs/Saturn.jpg";
+            break;	
+        case "uranus" :
+			result = "Planet: "+arrNames[7].toUpperCase()+
+		" having diameter of: "+arrDias[7] + " and "+arrDistances[7];
+			imgPlanet = "./imgs/Uranus.jpg";
+            break;			
+        case "neptune" :
+			result = "Planet: "+arrNames[8].toUpperCase()+
+		" having diameter of: "+arrDias[8] + " and "+arrDistances[8];
+			imgPlanet = "./imgs/Neptune.jpg";
+            break;				 
+		default :
+			result = "Planet: inexistent having diameter of: 0 Km and 0 Km as distances from Sun!";
+			imgPlanet = "./imgs/none.jpg";
+			break;					 
+		}		
+		
+		document.getElementById("Res").innerHTML = result;
+		document.getElementById("Rimg").src = imgPlanet;	  
+	}
+   </script>
+</head>
+<body>
+    <h1><b>Our solar system - The Planets</b></h1>
+        <hr id="top">
+<div class = "solar" style="width:75%; border:1px solid red">
+        <table class="solar" > 
+            <tr>
+                <td>
+                <img src = "./imgs/planets.jpg" alt = "Planets" usemap="#planets">
+                <map name="planets">
+                    <area shape="circle" coords="62,153,16" alt="Mecury" href="#./pages/Mercury.html" onclick="setPlanet('mercury');">
+                    <area shape="circle" coords="115,148,25" alt="Venus" href="#./pages/Venus.html" onclick="setPlanet('venus');">
+                    <area shape="circle" coords="188,144,28" alt="Earth" href="#./pages/Earth.html" onclick="setPlanet('earth');">
+                    <area shape="circle" coords="253,131,28" alt="Mars" href="#./pages/Mars.html" onclick="setPlanet('mars');">
+                    <area shape="circle" coords="465,130,38" alt="Saturn" href="#./pages/Saturn.html" onclick="setPlanet('saturn');">
+                    <area shape="circle" coords="541,130,23" alt="Uranus" href="#./pages/Uranus.html" onclick="setPlanet('uranus');">
+                    <area shape="circle" coords="598,130,17" alt="Neptune" href="#./pages/Neptune.html" onclick="setPlanet('neptune');">
+                    <area shape="circle" coords="353,125,75" alt="Jupiter" href="#./pages/Jupiter.html" onclick="setPlanet('jupiter');">
+                    <area shape="circle" coords="0,190,132" alt="Sun" href="#./pages/Sun.html" onclick="setPlanet('sun');">
+                    <area shape="rect" coords="0,0,672,263" alt="Space" href="./pages/Space.html" onclick="setPlanet('space');">
+                </map>
+                </td>
+            </tr> 
+        </table>
+    <br><br>
+    <div class="solar" style="width:65%; border:1px solid blue">
+        <form action="server_side.asp" method="post">
+            Enter the name of the planet: <input type="text" value="planet name" id="PName" />
+            <input type="button" value="Look up Planet" onclick="checkPlanet();" />
+            <p>Details: <span id="Res">?</span></p>
+            <img src="./imgs/none.jpg" alt="image place" id="Rimg" />
+        </form>
+    </div>
+</div>
+<br>
+<div class="plan1" style="width:95%; border:1px solid white">
+   <div>
+       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   </div>
+</div>
+</body>
+</html>

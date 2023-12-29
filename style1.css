@@ -1,0 +1,37 @@
+
+body{
+	background-color: yellow;
+}
+.tete td{
+	border: 2px solid white;
+	background-color: white;
+}
+.logo{
+	text-align: center;
+    padding-left: 100px;
+	padding-right: 100px;
+}
+.web{
+	text-align: center;
+    padding-left: 150px;
+	padding-right: 150px;
+	font-size: xx-large;
+	color: blue;
+	font-weight: bold;
+}
+.login{
+	text-align: center;
+    padding-left: 30px;
+	padding-right: 30px;
+}
+.welcome{
+	font-size: xx-large;
+	font-weight: bold;
+	text-align: center;
+	background-color: white;
+}
+.name{
+	background-color: white;
+	text-align: center;
+}
+

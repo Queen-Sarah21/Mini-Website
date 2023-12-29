@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+     <!-- Queen Sarah, Anumu Bih
+     Description: html5 file. This webpage is a form styled using CSS. Allows user to input some personal 
+     information, tells user of a product available and allows the user to choose his/her preference.
+	 Date: 2023-05-30              -->
+<html lang="en">
+ <head>
+   <meta charset="utf-8"/>
+   <link rel="stylesheet" href="../css/cssForm.CSS"/>
+   <title>CSS And FORMS</title>
+ </head>
+ <body>
+    <form action="action_page.asp" method = "post">
+        <fieldset class="login_color">
+            <legend><b>Login Section</b></legend>
+            User name: <input type="text" name="username" id="user" size="25" maxlength="10"><br><br>
+            Password: <input type="password" name="pwd" id="pass" size="25" maxlength="10"><br><br>
+       </fieldset>
+       <fieldset class="product_color">
+        <legend><b>Product Information</b></legend>
+        Product Id: &nbsp; &nbsp; &nbsp; <input type="text" name="proid" value="SKU"><br><br>
+        Product name:&nbsp; <input type="text" name="proname" value="Nike"><br><br>
+        Description: <textarea name="message" rows="10" cols="30">Nike shoes are a good brand that you can wear. Nike is one of the best brands that you can obtain these days. These shoes are made to use them in some sports. This shoe provides the user great comfort and effectiveness in the activities. This brand also made different designs in accord with the different sports that exist in the world. This brand is a monopoly now in actuality, with its great demand around the world.</textarea>
+       </fieldset><hr>
+       <div  class="fav_color">
+        <b>Favorite Color:</b> <br>
+        <input type="radio" name="ProdColor" value="blue"> Blue<br>
+        <input type="radio" name="ProdColor" value="red"> Red<br>
+        <input type="radio" name="ProdColor" value="green"> Green<br>
+        <input type="radio" name="ProdColor" value="black"> Black<br>
+        <input type="radio" name="ProdColor" value="white"> White<br><br>
+
+        <b>Quantity:</b> <input type="number" name="quantity" min="1" max="100"><br>
+        </div><hr>
+        <fieldset class="user_color">
+            <legend><b>User Information</b></legend>
+            Address:<br>
+            <input type="text" name="address" size="25" maxlength="25"><br>
+            City:<br>
+            <input type="text" name="city" size="20" maxlength="25"><br>
+            <label for="province">State-Province:</label><br> 
+            <select id="province" name="province">
+                <option value="alberta">Alberta</option>
+                <option value="britcolumbia">British Columbia</option>
+                <option value="manitoba">Manitoba</option>
+                <option value="nbrunswick">New Brunswick</option>
+                <option value="newfoundland&labrador">Newfoundland and Labrador</option>
+                <option value="nscotia">Nova Scotia</option>
+                <option value="ontario">Ontario</option>
+                <option value="pedwardisland">Prince Edward Island</option>
+                <option value="quebec">Quebec</option>
+                <option value="saskatchewan">Saskatchewan</option>
+            </select><br>
+            Postal Code:<br>
+            <input type="text" name="postalcode" size="20" maxlength="10" ><br>
+            <label for="country">Country:</label><br> 
+            <select id="country" name="country">
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+                <option value="mexico">Mexico</option>
+            </select><br>
+       </fieldset>
+       <fieldset class="sbt_color">
+        <input type="submit" value="Send to Server">
+        <input type = "reset" value = "Reset">
+        </fieldset>
+    </form>
+
+ </body>
+</html>

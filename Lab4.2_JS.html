@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "utf-8">
+    <!-- Queen Sarah, Anumu Bih
+     Description: Html5 and Java Script using toUpper, toLower, parseInt and parseFloat functions
+	   Date: 2023-06-06                 -->
+    <title>JS-_To_Upper_-To_Lower_-ParseInt_-ParseFloat</title>
+    </head>
+    <body>
+                <fieldset>
+                    <span>
+                         Your text is in lowercase: &nbsp; &nbsp; &nbsp; 
+                         <input type="text" id="demo1" value="your text" onchange="toUpperCase()" style="color: lightgreen;" />
+                         ->
+                         UPPERCASE: 
+                         <input type="button" value="toUpperCase()" onClick="toUpperCase()">
+                         <span id="displayUpper"></span>
+                    </span><br><br>
+
+                    <span>
+                             Your text is in UPPERCASE: 
+                             <input type="text" id="demo2" value="YOUR TEXT" onchange="toLowerCase()" style="color: lightgreen;" />
+                             ->
+                             lowercase: 
+                             <input type="button" value="toLowerCase()" onClick="toLowerCase()">
+                             <span id="displayLower"></span>
+                        </span>  
+                </fieldset>
+
+                <fieldset>
+                        <span>
+                            Var1 (integer) : 
+                            <input type="text" id="int1" value="15" onchange="addInt()" style="color: lightgreen;" />
+                            +
+                            Var2 (integer) : 
+                            <input type="text" id="int2" value="5.9" onchange="addInt()" style="color: lightgreen;" />
+                            <input type="button" value="=" onClick="addInt()">
+                            <span id="displayInt"></span>
+                        </span><br><br>
+
+                        <span>
+                            Var1 (float) :  &nbsp;  &nbsp;   
+                            <input type="text" id="float1" value="15.4" onchange="addFloat()" style="color: lightgreen;" />
+                            +
+                            Var2 (float) :  &nbsp;  &nbsp;
+                            <input type="text" id="float2" value="5.9" onchange="addFloat()" style="color: lightgreen;" />
+                            <input type="button" value="=" onClick="addFloat()">
+                            <span id="displayFloat"></span>
+                        </span>
+                </fieldset>
+
+        <script>
+            function toUpperCase(){
+                let text = document.getElementById("demo1").value;
+                document.getElementById("displayUpper").style.color='red';
+                document.getElementById("displayUpper").innerHTML=text.toUpperCase();
+            }
+
+            function toLowerCase(){
+                let text = document.getElementById("demo2").value;
+                document.getElementById("displayLower").style.color='red';
+                document.getElementById("displayLower").innerHTML=text.toLowerCase();
+            }
+
+            function addInt(){
+                let text = document.getElementById("int1").value;
+                let num1 = parseInt(text);
+                text = document.getElementById("int2").value;
+                let num2 = parseInt(text);
+                let res = num1 + num2;
+                document.getElementById("displayInt").style.color='red';
+                document.getElementById("displayInt").innerHTML=res;
+            }
+
+            function addFloat(){
+                let text = document.getElementById("float1").value;
+                let num1 = parseFloat(text);
+                text = document.getElementById("float2").value;
+                let num2 = parseFloat(text);
+                let res = num1 + num2;
+                document.getElementById("displayFloat").style.color='red';
+                document.getElementById("displayFloat").innerHTML=res;
+            }
+
+        </script>
+    </body>
+</html>

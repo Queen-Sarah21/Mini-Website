@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Queen Sarah, Anumu Bih
+         Description:  Html5 and Java Script. A user identification webpage used whuch validates the user's personal information
+         using Regular Expression and passes a cookie to the second page which displays all the inputted 
+         information and tells the user how long he/she took to fill in the form in seconds.
+           Date: 2023-07-25                 -->
+  <head>
+    <meta charset="utf-8" />
+    <title>User Identification</title>
+    
+    <style type="text/css">
+      .error {
+        border-color: red;
+      }
+      .error-message {
+        color: red;
+      }
+    </style>
+    <script src="./Pages/jquery-3.6.1.min.js"></script>
+    <script src="./Pages/jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") c = c.substring(1);
+          if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      function validateInputs() {
+        //Regular expressions for validation
+        const fNameReg = /^[A-Za-z\s]+$/;
+        const lNameReg = /^[A-Za-z\s]+$/;
+        const ageReg = /^(?:[1-9][0-9]?|1[0-9]{2}|200)$/;
+        const counReg = /^[A-Za-z\s]+$/;
+        const provReg = /^[A-Za-z\s]+$/;
+        const cityReg = /^[A-Za-z\s]+$/;
+        const postReg = /^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/;
+        const telReg =
+          /^\+?1?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})$/;
+        let isValid = true;
+        // Reset error messages
+        $(".error-message").text("");
+        $("input").removeClass("error");
+
+        const fname = $("#fname").val();
+        const lname = $("#lname").val();
+        const age = $("#age").val();
+        const country = $("#country").val();
+        const province = $("#prov").val();
+        const city = $("#city").val();
+        const postalCode = $("#pcode").val();
+        const telephone = $("#tel").val();
+        if (!fname.match(fNameReg)) {
+          isValid = false;
+          setError(
+            "fname",
+            "Please enter a valid name (letters and spaces only)."
+          );
+        }
+        if (!lname.match(lNameReg)) {
+          setError(
+            "lname",
+            "Please enter a valid name (letters and spaces only)."
+          );
+          isValid = false;
+        }
+        if (!age.match(ageReg)) {
+          setError(
+            "age",
+            "Invalid age. Please enter a valid age between 1 and 200.."
+          );
+          isValid = false;
+        }
+        if (!country.match(counReg)) {
+          setError(
+            "country",
+            "Please enter a valid country (letters and spaces only)."
+          );
+          isValid = false;
+        }
+        if (!province.match(provReg)) {
+          setError(
+            "prov",
+            "Please enter a valid province (letters and spaces only)."
+          );
+          isValid = false;
+        }
+        if (!city.match(cityReg)) {
+          setError(
+            "city",
+            "Please enter a valid city (letters and spaces only)."
+          );
+          isValid = false;
+        }
+        if (!postalCode.match(postReg)) {
+          setError(
+            "pcode",
+            "Please enter a valid postal code (Postal Code format is: A9A9A9 or A9A 9A9 or A9A-9A9)."
+          );
+          isValid = false;
+        }
+        if (!telephone.match(telReg)) {
+          setError(
+            "tel",
+            "Please enter a valid phone number (Ex:999 999 9999 or 123 123-1234 or +1 (123) 456-7890)."
+          );
+          isValid = false;
+        }
+
+        //Save valid fields in a cookie
+        if (isValid) {
+          const formData = {
+            fname: fname,
+            lname: lname,
+            age: age,
+            country: country,
+            province: province,
+            city: city,
+            postalCode: postalCode,
+            telephone: telephone,
+          };
+          setCookie("formData", JSON.stringify(formData), 1);
+          window.location.href = "UserPage2.html";
+        }
+        return false;
+    }
+      function setError(fieldId, message) {
+        $("#" + fieldId).addClass("error");
+        $("#" + fieldId + "-error")
+          .text(message)
+          .show();
+      }
+
+      $(document).ready(function () {
+        $("#fname, #lname, #age, #country, #prov, #city, #pcode, #tel").on(
+          "input",
+          function () {
+            $(this).next(".error-message").text("");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <h1 style="color: aqua"><b>User Identification</b></h1>
+    <form
+      onsubmit="return validateInputs(); setTimeSpentCookie();"
+      action="UserPage2.html"
+      method="get"
+    >
+      <fieldset class="Personal Information">
+        <legend><b>Login Section</b></legend>
+        First Name: &nbsp;&nbsp;
+        <input type="text" name="fname" id="fname" size="25" required />
+        <span class="error-message" id="fname-error"></span><br /><br />
+        Last Name: &nbsp;&nbsp;
+        <input type="text" name="lname" id="lname" size="25" required />
+        <span class="error-message" id="lname-error"></span><br /><br />
+        Age: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <input type="number" name="age" id="age" required />
+        <span class="error-message" id="age-error"></span><br /><br />
+        Country: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+          type="text"
+          name="country"
+          id="country"
+          size="25"
+          required
+        />
+        <span class="error-message" id="country-error"></span><br /><br />
+        Province:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input
+          type="text"
+          name="prov"
+          id="prov"
+          size="25"
+          required
+        />
+        <span class="error-message" id="prov-error"></span><br /><br />
+        City:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+          type="text"
+          name="city"
+          id="city"
+          size="25"
+          required
+        />
+        <span class="error-message" id="city-error"></span><br /><br />
+        Postal Code: &nbsp;<input
+          type="text"
+          name="pcode"
+          id="pcode"
+          size="25"
+          required
+        />
+        <span class="error-message" id="pcode-error"></span><br /><br />
+        Telephone: &nbsp;&nbsp;&nbsp;
+        <input type="number" name="tel" id="tel" required />
+        <span class="error-message" id="tel-error"></span><br /><br />
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>

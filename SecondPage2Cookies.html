@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+     <!-- Queen Sarah Anumu Bih
+     Description: html5 file. JS/Date/Try & Catch/RegExp and images. Displaying the images of the total 
+	 cost of amount inputed in the first page. This webpage also contains cookies; receiving cookies and deleting
+	 from first page.
+	 Date: 2023/07/04                 -->
+ <head>
+	<meta charset = "utf-8">
+   <title>Lab 7.2 [Date and Try&Catch RegExp and images]</title>
+
+   <script type="text/javascript" >
+   //let tot; //global variable
+
+	function displayMoney(getAmount)
+	{
+		var amount = getAmount ;// .toFixed(2) ;
+		document.getElementById("display").innerHTML = amount;
+//alert("100$= "+amount);
+		var	val100 = parseInt(amount/100) ;
+		if (val100>0)
+		{ document.getElementById("bn100").src = "../img/100$.jpg";
+			}
+		else{ document.getElementById("bn100").src = "";}
+		document.getElementById("hun").innerHTML = val100;//Math.floor(val100);
+		document.getElementById("totalHun").innerHTML = "$" + (val100 * 100);//(Math.floor(val100)*100);
+
+		amount = (amount - val100*100).toFixed(2);
+//alert("50$= "+amount);
+				var	val50 = parseInt(amount/50);
+					if (val50>0)
+					{
+					document.getElementById("bn50").src = "../img/50$.jpg";
+					}
+					else{
+					document.getElementById("bn50").src = "";}
+				document.getElementById("fifty").innerHTML = val50;
+				document.getElementById("totalFifty").innerHTML = "$" + (val50*50);
+
+				amount = (amount - (val50*50)).toFixed(2) ;
+
+//alert("20$="+amount);
+				var	val20 = parseInt(amount/20);
+					if (val20>0)
+					{document.getElementById("bn20").src = "../img/20$.jpg";}
+					else{document.getElementById("bn20").src = "";}
+					document.getElementById("twenty").innerHTML = val20;
+					document.getElementById("totalTwenty").innerHTML = "$" + (val20*20);
+
+				amount = (amount - (val20*20)).toFixed(2) ;
+//alert("10$="+amount);
+				var	val10 = parseInt(amount/10);
+					if (val10>0)
+					{document.getElementById("bn10").src = "../img/10$.jpg";}
+					else{document.getElementById("bn10").src = "";}
+					document.getElementById("ten").innerHTML = val10;
+					document.getElementById("totalTen").innerHTML = "$" + (val10*10);
+
+				var	amount = (amount - (val10*10)).toFixed(2) ;
+//alert("5$ amount="+amount);
+				var	val05 = parseInt(amount/5);
+					if (val05>0)
+					{document.getElementById("bn05").src = "../img/5$.jpg";}
+					else
+					{document.getElementById("bn05").src = "";}
+					document.getElementById("five").innerHTML = Math.floor(val05);
+                    document.getElementById("totalFive").innerHTML = ("$") + (Math.floor(val05)*5);
+
+				var	amount = (amount - (val05*5)).toFixed(2) ;
+
+//alert("2$="+amount);
+				var	val02 = parseInt(amount/2);
+					if (val02>0)
+					{document.getElementById("bn02").src = "../img/2$.jpg";}
+					else{document.getElementById("bn02").src = "";}
+					document.getElementById("toon").innerHTML = Math.floor(val02);
+					document.getElementById("totalToon").innerHTML = ("$") + (Math.floor(val02)*2);
+
+				var	amount = (amount - (val02*2)).toFixed(2) ;
+//alert("1$="+amount);
+				var	val01 = parseInt(amount/1);
+					if (val01>0)
+					{document.getElementById("bn01").src = "../img/1$.jpg";}
+					else{document.getElementById("bn01").src = "";}
+					document.getElementById("one").innerHTML = Math.floor(val01);
+					document.getElementById("totalOne").innerHTML = ("$") + (Math.floor(val01)*1);
+
+				var	amount = (amount - (val01*1)).toFixed(2) ;
+//alert("0.25="+amount);
+				var	val25 = parseInt(amount/0.25);
+					if (val25>0)
+					{document.getElementById("bn25").src = "../img/25c.jpg";}
+					else{document.getElementById("bn25").src = "";}
+					document.getElementById("quater").innerHTML = val25;
+					document.getElementById("totalQuater").innerHTML = (val25)*0.25 + ("$");
+
+				var	amount = (amount - (val25*0.25)).toFixed(2) ;
+//alert("0.10="+amount);
+        if (amount == 0.08 || amount == 0.09) amount = 0.1;
+        if (amount == 0.18 || amount == 0.19) amount = 0.2;
+				var	val10c = parseInt(amount/0.10);
+					if (val10c>0)
+					{document.getElementById("bn10c").src = "../img/10c.jpg";}
+					else{document.getElementById("bn10c").src = "";}
+					document.getElementById("dime").innerHTML = val10c;
+					document.getElementById("totalDime").innerHTML = (val10c)*0.10 + ("$");
+
+				var	amount = (amount - (val10c*0.10)).toFixed(2) ;
+//alert("0.05="+amount);
+        if (amount == 0.03 || amount == 0.04 || amount == 0.06 || amount == 0.07) amount = 0.05;
+        		var	val05c = parseInt(amount/0.05);
+					if (val05c>0)
+					{document.getElementById("bn5c").src = "../img/5c.jpg";}
+					else{document.getElementById("bn5c").src = "";}
+					document.getElementById("nickel").innerHTML = val05c;
+					document.getElementById("totalNickel").innerHTML = (val05c)*0.05 + ("$");
+	}
+
+    function setCookie(cname,cvalue,exsec) 
+        {
+        const d = new Date();
+        d.setTime(d.getTime() + (exsec*1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) 
+        {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i < ca.length; i++)  
+            {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') 
+                {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) 
+                {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() 
+        {
+			var d = getCookie("cDate");
+			if(d != ""){
+				document.getElementById("date").innerHTML = d;
+			}
+			else{
+				document.getElementById("date").innerHTML = myDate.toDateString();//"cDate";
+			}
+			//document.getElementById('date').innerHTML = getCookie('cDate');
+            var tot = getCookie('totalPrice');
+            if (tot !="")
+            {
+                document.getElementById("display").innerHTML = tot
+                //document.getElementById("totalPrice").innerHTML = tot;
+				displayMoney(tot);
+
+            }
+            else{
+                tot = prompt("Please enter an amount:","");
+                if (tot != "" && tot != null) 
+                {
+                    getCookie("totalPrice", tot, 10);
+					displayMoney(tot);
+                }
+            }
+        }
+    
+		</script>
+  <!--script type="text/javascript" src="money.js"></script-->
+
+   <style>
+	.header {
+		margin: 30px;
+	}
+	.container {
+		margin: auto;
+	}
+	table, td {
+		border: 1px solid #e6e6e6;
+		background-color: #cccccc;
+	}
+	.thead {
+		border-top: 1px solid gray;
+	}
+	.right {float:right;}
+	.header {margin: 30px;}
+	.container {margin: auto;}
+	table, td {
+		border: 1px solid #e6e6e6;
+		background-color: #cccccc;
+	}
+	.thead {border-top: 1px solid gray;}
+   </style>
+ </head>
+ <body onload="checkCookie()">  <!-- onload="hid()"-->
+	<div class="header">
+		<h2>Today Date: <span id="date"></span></h2>
+	</div>
+			
+    <!-- <button onclick="displayMoney(tot);">Calculate banknotes and coins</button> -->
+		<div>
+		  <h3>Calculate banknotes and coins</h3>
+		</div>
+	<table>
+	<thead><tr><th>The total amount in CAD dollars: <span id="display"></span></th></tr>
+	</thead>
+	<tbody>
+	<tr>
+      <td id="hundred">100 dollars bills: <span id="hun"></span>
+	  <br> Amount: <span id="totalHun"></span>
+	  <br><img src="bn100" alt="" id="bn100" /></td>
+      <td>Toonie: <span id="toon"></span><br> Amount: <span id="totalToon"></span>
+	  <br><img src="bn02" alt="" id="bn02" /></td>
+    </tr>
+    <tr>
+      <td id="fif">50 dollars bills: <span id="fifty"></span>
+	  <br> Amount: <span id="totalFifty"></span>
+	  <br><img  src="bn50" alt="" id="bn50" /></td>
+      <td>Loonies:<span id="one"></span><br> Amount: <span id="totalOne"></span>
+	  <br><img  src="bn01" alt="" id="bn01" /></td>
+    </tr>
+	 <tr>
+      <td>20 dollars bills: <span id="twenty"></span><br> Amount: <span id="totalTwenty"></span>
+	  <br><img  src="bn20" alt="" id="bn20" /></td>
+      <td>Quaters: <span id="quater"></span><br> Amount: <span id="totalQuater"></span>
+	  <br><img  src="bn25" alt="" id="bn25" /></td>
+    </tr>
+	 <tr>
+      <td>10 dollars bills:<span id="ten"></span><br> Amount: <span id="totalTen"></span>
+	  <br><img src="bn10" alt="" id="bn10" /></td>
+      <td>Dimes: <span id="dime"></span><br> Amount: <span id="totalDime"></span>
+	  <br><img src="bn10c" alt="" id="bn10c" /></td>
+    </tr>
+	<tr>
+      <td>5 dollars bills: <span id="five"></span><br> Amount: <span id="totalFive"></span>
+	  <br><img src="bn05" alt="" id="bn05" /></td>
+      <td>Nickels: <span id="nickel"></span><br/> Amount: <span id="totalNickel"></span>
+	  <br><img src="bn5c" alt="" id="bn5c" /></td>
+    </tr>
+	</tbody>
+	</table>
+    <input type ="button" value="Delete Cookie" 
+    onclick="setCookie('ctest', '', -5)" /> &nbsp;
+    <a href="./FirstPage1Cookies.html"> First Page </a>
+	
+</body>
+</html>

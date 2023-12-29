@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Queen Sarah, Anumu Bih
+         Description: Html5 and Java Script. This is the webpage where all the inputted 
+         information and tells the user how long he/she took to fill in the form in seconds.
+           Date: 2023-07-25                 -->
+  <head>
+    <meta charset="utf-8" />
+    <title>User Identification Page2</title>
+    <script src="./Pages/jquery-3.6.1.min.js"></script>
+    <script src="./Pages/jquery-1.11.0.js"></script>
+    <script>
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+      function deleteCookie() {
+        setCookie("formData", "", -1);
+        setTimeSpentCookie();
+        window.location.href = "UserIdentification.html"; // Redirect back to the first webpage
+      }
+      visit_time = Date.now();
+      // Function to set the cookie with the current timestamp
+      function setTimeSpentCookie() {
+        var now = new Date();
+        document.cookie = "time_spent=" + now.getTime() + "; path=/";
+      }
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      }
+
+      window.onload = function () {
+        var visitTime = parseInt(getCookie("time_spent"));
+        if (!isNaN(visitTime)) {
+          var currentTime = new Date().getTime();
+          var timeSpent = currentTime - visitTime;
+
+          var seconds = Math.floor(timeSpent / 1000) % 60;
+          var formattedTime = seconds + "s";
+        }
+        const cookieData = document.cookie
+          .split(";")
+          .map((cookie) => cookie.trim())
+          .find((cookie) => cookie.startsWith("formData="));
+
+        if (cookieData) {
+          const formData = JSON.parse(cookieData.split("=")[1]);
+          $("#fname").text("First Name: " + formData.fname);
+          $("#lname").text("Last Name: " + formData.lname);
+          $("#age").text("Age: " + formData.age);
+          $("#country").text("Country: " + formData.country);
+          $("#prov").text("Province: " + formData.province);
+          $("#city").text("City: " + formData.city);
+          $("#pcode").text("Postal COde: " + formData.postalCode);
+          $("#tel").text("Telephone Number: " + formData.telephone);
+          $("#timeSpent").text("You've spent: " + formattedTime);
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Second Page</h1>
+    <p id="fname"></p>
+    <p id="lname"></p>
+    <p id="age"></p>
+    <p id="country"></p>
+    <p id="prov"></p>
+    <p id="city"></p>
+    <p id="pcode"></p>
+    <p id="tel"></p>
+    <p id="timeSpent"></p>
+    <button onclick="deleteCookie()">Delete Cookie and Go Back</button>
+  </body>
+</html>
